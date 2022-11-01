@@ -1,6 +1,6 @@
-# Grey Sky Media test:
+# IconPicker:
 
-- :link: Preview at: https://greyskymedia.netlify.app
+- :link: Preview at: https://phosphoricon.netlify.app
 
 ---
 
