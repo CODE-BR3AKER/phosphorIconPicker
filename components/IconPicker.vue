@@ -1,81 +1,65 @@
-<script>
-export default {
-  props: ['value'],
-  data: function () {
-    return {
-      focusOn: true, // <- set this to false
-      icons: icons,
-      hoverPanel: false,
-      search: '',
-      beforeSelect: '',
-      selected: '',
-    };
-  },
-  beforeMount() {
-    this.search = this.value;
-  },
-  watch: {
-    search: function (newValue) {
-      this.$emit('input', newValue);
-    },
-  },
-  methods: {
-    blur() {
-      timeout = setTimeout(() => {
-        this.focusOn = false;
-      }, 150);
-    },
-    focus() {
-      this.focusOn = true;
-    },
-    select(icon) {
-      clearTimeout(timeout);
-      if (icon) {
-        if (this.search != this.selected) this.beforeSelect = this.search;
-        this.selected = icon.title;
-        this.search = icon.title;
-      }
-      this.$refs.picker.focus();
-    },
-  },
-  computed: {
-    iconsFiltered: function () {
-      const search =
-        this.search == this.selected ? this.beforeSelect : this.search;
-      return this.icons.filter(
-        (i) =>
-          i.title.indexOf(search) !== -1 ||
-          i.searchTerms.some((t) => t.indexOf(search) !== -1)
-      );
-    },
-  },
-};
+<script setup>
+import { defineEmits, watch, computed, ref } from 'vue';
+import iconList from '~/assets/icons.json';
+
+const icons = iconList.icons;
+const hoverPanel = ref(false);
+const search = ref('');
+const beforeSelect = ref('');
+const selected = ref('');
+const timeout = ref(undefined);
+const picker = ref(null);
+
+/* onBeforeMount(() => {
+  search.value = modelValue;
+}); */
+
+/* watch(search, (newValue) => {
+  search.value= newValue;
+}); */
+/* function blur() {
+  timeout.value = setTimeout(() => {
+    focusOn.value = false;
+  }, 150);
+}
+function focus() {
+  focusOn.value = true;
+} */
+function select(icon) {
+  clearTimeout(timeout);
+  if (icon) {
+    if (search.value != selected.value) beforeSelect.value = search.value;
+    selected.value = icon.title;
+    search.value = icon.title;
+  }
+  picker.focus();
+}
+const iconsFiltered = computed(() => {
+  return icons.filter(
+    (i) =>
+      i.name.indexOf(search.value) !== -1 ||
+      i.tags.some((t) => t.indexOf(search.value) !== -1)
+  );
+});
 </script>
 <template>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Font awesome icon :</label>
+  <div class="my-4">
     <input
-      ref="picker"
       v-model="search"
       @blur="blur"
       @focus="focus"
-      type="email"
-      class="form-control"
-      id="exampleFormControlInput1"
+      type="text"
+      class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-grey-darker border border-grey rounded"
       placeholder="Search an icon"
     />
     <transition name="icon-preview-fade">
-      <div v-if="focusOn" class="preview-container">
+      <div class="bg-slate-300">
         <div
           @click="select(undefined)"
           @mouseover="hoverPanel = true"
           @mouseout="hoverPanel = false"
-          :class="[
-            'previewer',
-            'rounded',
-            { 'custom-shadow-sm': !hoverPanel },
-            { 'custom-shadow': hoverPanel },
-          ]"
+          class="grid grid-cols-6 justify-center items-center rounded"
+          :class="[{ 'shadow-sm': !hoverPanel }, { 'shadow-lg': hoverPanel }]"
         >
           <div
             v-for="(i, index) in iconsFiltered"
@@ -88,10 +72,11 @@ export default {
                 'icon-wrapper',
                 'rounded',
                 'shadow-sm',
-                { selected: i.title == selected },
+                { selected: i.name == selected },
               ]"
             >
-              <i :class="i.title" />
+              <i :class="`ph-` + i.name" />
+              {{ i.name }}
             </div>
           </div>
         </div>

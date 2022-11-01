@@ -1,6 +1,6 @@
 <script setup>
+import { ref } from 'vue';
 const showIcons = ref(false);
-const icon = ref('');
 </script>
 <template>
   <div
@@ -15,17 +15,6 @@ const icon = ref('');
       Pick Icon &#8595;
     </button>
     <IconPicker v-if="showIcons" />
-    <div id="wrapper" class="bg-light d-flex flex-column align-items-center">
-      <div id="form-container" class="col-6 bg-whte p-5 rounded">
-        <div class="row">
-          <div class="col">
-            <div id="demo">
-              <iconPicker v-model="icon"></iconPicker>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <style>
