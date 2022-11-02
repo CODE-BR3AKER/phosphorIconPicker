@@ -3,12 +3,8 @@ import { defineEmits, watch, computed, ref } from 'vue';
 import iconList from '~/assets/icons.json';
 
 const icons = iconList.icons;
-const hoverPanel = ref(false);
 const search = ref('');
-const beforeSelect = ref('');
 const selected = ref('');
-const timeout = ref(undefined);
-const picker = ref(null);
 
 const props = defineProps({
   modelValue: String,
@@ -22,14 +18,13 @@ watch(search, (newValue) => {
   emit('update:modelValue', newValue);
 });
 function select(icon) {
-  clearTimeout(timeout);
-  if (icon) {
-    if (search.value != selected.value) beforeSelect.value = search.value;
-    selected.value = icon.title;
-    search.value = icon.title;
+  if (selected.value !== icon.name) {
+    selected.value = icon.name;
+  } else {
+    selected.value = '';
   }
-  //  picker.focus();
 }
+
 const iconsFiltered = computed(() => {
   return icons.filter(
     (i) =>
@@ -39,28 +34,21 @@ const iconsFiltered = computed(() => {
 });
 </script>
 <template>
-  <div class="my-4 bg-gray-300 dark:bg-gray-900">
+  <div class="my-4 rounded bg-transparent border">
     <input
       v-model="search"
       type="text"
-      class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-transparent rounded"
+      class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-transparent rounded border-b active:appearance-none"
       placeholder="Search an icon"
     />
-    <Transition name="icon-preview-fade">
+    <Transition name="transition duration-150">
       <div class="h-56 overflow-y-scroll">
-        <div
-          @click="select(undefined)"
-          class="grid grid-cols-6 justify-center items-center rounded-lg"
-        >
-          <div
-            v-for="(i, index) in iconsFiltered"
-            :key="index"
-            class="icon-preview"
-          >
+        <div class="grid grid-cols-6 justify-center items-center">
+          <div v-for="(i, index) in iconsFiltered" :key="index">
             <div
-              @click.prevent.stop="select(i)"
-              class="m-2"
-              :class="[{ selected: i.name == selected }]"
+              @click="select(i)"
+              class="shadow-sm m-1 p-2 hover:bg-emerald-500 hover:text-white cursor-pointer"
+              :class="{ 'bg-emerald-500 text-white': selected == i.name }"
             >
               <Icon :name="`ph:` + i.name" size="24" />
             </div>
