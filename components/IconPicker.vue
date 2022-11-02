@@ -10,21 +10,17 @@ const selected = ref('');
 const timeout = ref(undefined);
 const picker = ref(null);
 
-/* onBeforeMount(() => {
-  search.value = modelValue;
-}); */
+const props = defineProps({
+  modelValue: String,
+});
 
-/* watch(search, (newValue) => {
-  search.value= newValue;
-}); */
-/* function blur() {
-  timeout.value = setTimeout(() => {
-    focusOn.value = false;
-  }, 150);
-}
-function focus() {
-  focusOn.value = true;
-} */
+onBeforeMount(() => {
+  search.value = props.modelValue;
+});
+const emit = defineEmits(['update:modelValue']);
+watch(search, (newValue) => {
+  emit('update:modelValue', newValue);
+});
 function select(icon) {
   clearTimeout(timeout);
   if (icon) {
@@ -32,7 +28,7 @@ function select(icon) {
     selected.value = icon.title;
     search.value = icon.title;
   }
-  picker.focus();
+  //  picker.focus();
 }
 const iconsFiltered = computed(() => {
   return icons.filter(
@@ -43,17 +39,15 @@ const iconsFiltered = computed(() => {
 });
 </script>
 <template>
-  <div class="my-4">
+  <div class="my-4 bg-gray-300 dark:bg-gray-900">
     <input
-      v-model.lazy="search"
-      @blur="blur"
-      @focus="focus"
+      v-model="search"
       type="text"
-      class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-grey-darker border border-grey rounded"
+      class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-transparent rounded"
       placeholder="Search an icon"
     />
     <Transition name="icon-preview-fade">
-      <div class="bg-slate-300 h-56 overflow-y-scroll">
+      <div class="h-56 overflow-y-scroll">
         <div
           @click="select(undefined)"
           class="grid grid-cols-6 justify-center items-center rounded-lg"
@@ -65,12 +59,8 @@ const iconsFiltered = computed(() => {
           >
             <div
               @click.prevent.stop="select(i)"
-              :class="[
-                'icon-wrapper',
-                'rounded',
-                'shadow-sm',
-                { selected: i.name == selected },
-              ]"
+              class="m-2"
+              :class="[{ selected: i.name == selected }]"
             >
               <Icon :name="`ph:` + i.name" size="24" />
             </div>
