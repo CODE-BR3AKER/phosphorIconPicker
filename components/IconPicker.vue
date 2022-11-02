@@ -44,7 +44,7 @@ const iconsFiltered = computed(() => {
     <Transition name="transition duration-150">
       <div class="h-56 overflow-y-scroll w-80">
         <div
-          class="grid grid-cols-6 justify-center items-center"
+          class="grid grid-cols-6 justify-items-center items-center"
           v-if="iconsFiltered.length"
         >
           <div v-for="(i, index) in iconsFiltered" :key="index">
