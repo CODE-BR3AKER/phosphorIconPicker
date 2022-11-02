@@ -45,7 +45,7 @@ const iconsFiltered = computed(() => {
 <template>
   <div class="my-4">
     <input
-      v-model="search"
+      v-model.lazy="search"
       @blur="blur"
       @focus="focus"
       type="text"
@@ -56,10 +56,7 @@ const iconsFiltered = computed(() => {
       <div class="bg-slate-300 h-56 overflow-y-scroll">
         <div
           @click="select(undefined)"
-          @mouseover="hoverPanel = true"
-          @mouseout="hoverPanel = false"
           class="grid grid-cols-6 justify-center items-center rounded-lg"
-          :class="[{ 'shadow-sm': !hoverPanel }, { 'shadow-lg': hoverPanel }]"
         >
           <div
             v-for="(i, index) in iconsFiltered"
