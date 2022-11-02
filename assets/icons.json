@@ -536,13 +536,13 @@
       "Icon": "ArrowBendDownRight"
     },
     {
-      "name": "arrow-bend-double-left",
+      "name": "arrow-bend-double-up-left",
       "categories": ["ARROWS"],
       "tags": ["directional", "pointer", "pointing", "arrowhead"],
       "Icon": "ArrowBendDoubleUpLeft"
     },
     {
-      "name": "arrow-bend-double-right",
+      "name": "arrow-bend-double-up-right",
       "categories": ["ARROWS"],
       "tags": ["directional", "pointer", "pointing", "arrowhead"],
       "Icon": "ArrowBendDoubleUpRight"
@@ -913,19 +913,19 @@
       "Icon": "ArrowCounterClockwise"
     },
     {
-      "name": "arrow-down-up",
+      "name": "arrows-down-up",
       "categories": ["ARROWS"],
       "tags": ["directional", "pointer", "pointing", "arrowhead"],
-      "Icon": "ArrowDownUp"
+      "Icon": "ArrowsDownUp"
     },
     {
-      "name": "arrow-left-right",
+      "name": "arrows-left-right",
       "categories": ["ARROWS"],
       "tags": ["directional", "pointer", "pointing", "arrowhead"],
-      "Icon": "ArrowLeftRight"
+      "Icon": "ArrowsLeftRight"
     },
     {
-      "name": "arrow-horizontal",
+      "name": "arrows-horizontal",
       "categories": ["ARROWS"],
       "tags": [
         "*new*",
@@ -937,10 +937,10 @@
         "left",
         "right"
       ],
-      "Icon": "ArrowHorizontal"
+      "Icon": "ArrowsHorizontal"
     },
     {
-      "name": "arrow-vertical",
+      "name": "arrows-vertical",
       "categories": ["ARROWS"],
       "tags": [
         "*new*",
@@ -952,10 +952,10 @@
         "up",
         "down"
       ],
-      "Icon": "ArrowVertical"
+      "Icon": "ArrowsVertical"
     },
     {
-      "name": "arrow-in",
+      "name": "arrows-in",
       "categories": ["ARROWS"],
       "tags": [
         "directional",
@@ -967,10 +967,10 @@
         "resize",
         "shrink"
       ],
-      "Icon": "ArrowIn"
+      "Icon": "ArrowsIn"
     },
     {
-      "name": "arrow-in-cardinal",
+      "name": "arrows-in-cardinal",
       "categories": ["ARROWS"],
       "tags": [
         "directional",
@@ -982,7 +982,7 @@
         "resize",
         "shrink"
       ],
-      "Icon": "ArrowInCardinal"
+      "Icon": "ArrowsInCardinal"
     },
     {
       "name": "arrows-in-simple",
@@ -999,7 +999,7 @@
       "Icon": "ArrowInSimple"
     },
     {
-      "name": "arrow-in-line-horizontal",
+      "name": "arrows-in-line-horizontal",
       "categories": ["ARROWS", "DESIGN", "EDITOR"],
       "tags": [
         "directional",
@@ -1010,10 +1010,10 @@
         "center",
         "align"
       ],
-      "Icon": "ArrowInLineHorizontal"
+      "Icon": "ArrowsInLineHorizontal"
     },
     {
-      "name": "arrow-in-line-vertical",
+      "name": "arrows-in-line-vertical",
       "categories": ["ARROWS", "DESIGN", "EDITOR"],
       "tags": [
         "directional",
@@ -1024,10 +1024,10 @@
         "center",
         "align"
       ],
-      "Icon": "ArrowInLineVertical"
+      "Icon": "ArrowsInLineVertical"
     },
     {
-      "name": "arrow-out",
+      "name": "arrows-out",
       "categories": ["ARROWS"],
       "tags": [
         "directional",
@@ -1039,10 +1039,10 @@
         "resize",
         "grow"
       ],
-      "Icon": "ArrowOut"
+      "Icon": "ArrowsOut"
     },
     {
-      "name": "arrow-out-cardinal",
+      "name": "arrows-out-cardinal",
       "categories": ["ARROWS"],
       "tags": [
         "directional",
@@ -1056,10 +1056,10 @@
         "move",
         "grow"
       ],
-      "Icon": "ArrowOutCardinal"
+      "Icon": "ArrowsOutCardinal"
     },
     {
-      "name": "arrow-out-simple",
+      "name": "arrows-out-simple",
       "categories": ["ARROWS"],
       "tags": [
         "directional",
@@ -1070,19 +1070,19 @@
         "fullscreen",
         "resize"
       ],
-      "Icon": "ArrowOutSimple"
+      "Icon": "ArrowsOutSimple"
     },
     {
-      "name": "arrow-out-line-horizontal",
+      "name": "arrows-out-line-horizontal",
       "categories": ["ARROWS", "DESIGN", "EDITOR"],
       "tags": ["directional", "pointer", "pointing", "arrowhead", "open"],
       "Icon": "ArrowOutLineHorizontal"
     },
     {
-      "name": "arrow-out-line-vertical",
+      "name": "arrows-out-line-vertical",
       "categories": ["ARROWS", "DESIGN", "EDITOR"],
       "tags": ["directional", "pointer", "pointing", "arrowhead", "open"],
-      "Icon": "ArrowOutLineVertical"
+      "Icon": "ArrowsOutLineVertical"
     },
     {
       "name": "article",

@@ -52,13 +52,13 @@ const iconsFiltered = computed(() => {
       class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-grey-darker border border-grey rounded"
       placeholder="Search an icon"
     />
-    <transition name="icon-preview-fade">
-      <div class="bg-slate-300">
+    <Transition name="icon-preview-fade">
+      <div class="bg-slate-300 h-56 overflow-y-scroll">
         <div
           @click="select(undefined)"
           @mouseover="hoverPanel = true"
           @mouseout="hoverPanel = false"
-          class="grid grid-cols-6 justify-center items-center rounded"
+          class="grid grid-cols-6 justify-center items-center rounded-lg"
           :class="[{ 'shadow-sm': !hoverPanel }, { 'shadow-lg': hoverPanel }]"
         >
           <div
@@ -75,11 +75,11 @@ const iconsFiltered = computed(() => {
                 { selected: i.name == selected },
               ]"
             >
-              <Icon :name="`ph:` + i.name" />
+              <Icon :name="`ph:` + i.name" size="24" />
             </div>
           </div>
         </div>
       </div>
-    </transition>
+    </Transition>
   </div>
 </template>
