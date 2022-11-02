@@ -8,6 +8,7 @@ const selected = ref('');
 
 const props = defineProps({
   modelValue: String,
+  fill: String,
 });
 
 onBeforeMount(() => {
@@ -53,7 +54,7 @@ const iconsFiltered = computed(() => {
               class="shadow-sm m-1 p-2 hover:bg-emerald-500 hover:text-white cursor-pointer"
               :class="{ 'bg-emerald-500 text-white': selected == i.name }"
             >
-              <Icon :name="`ph:` + i.name" size="24" />
+              <Icon :name="`ph:` + i.name + fill" size="24" />
             </div>
           </div>
         </div>

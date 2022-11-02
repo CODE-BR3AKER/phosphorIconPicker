@@ -15,7 +15,7 @@ const icon = ref('');
     >
       Pick Icon &#8595;
     </button>
-    <IconPicker v-if="showIcons" v-model="icon" />
+    <IconPicker v-if="showIcons" v-model="icon" fill="-duotone" />
   </div>
 </template>
 <style>
