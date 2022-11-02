@@ -28,8 +28,8 @@ function select(icon) {
 const iconsFiltered = computed(() => {
   return icons.filter(
     (i) =>
-      i.name.indexOf(search.value) !== -1 ||
-      i.tags.some((t) => t.indexOf(search.value) !== -1)
+      i.name.indexOf(search.value.toLowerCase()) !== -1 ||
+      i.tags.some((t) => t.indexOf(search.value.toLowerCase()) !== -1)
   );
 });
 </script>
@@ -42,8 +42,11 @@ const iconsFiltered = computed(() => {
       placeholder="Search an icon"
     />
     <Transition name="transition duration-150">
-      <div class="h-56 overflow-y-scroll">
-        <div class="grid grid-cols-6 justify-center items-center">
+      <div class="h-56 overflow-y-scroll w-80">
+        <div
+          class="grid grid-cols-6 justify-center items-center"
+          v-if="iconsFiltered.length"
+        >
           <div v-for="(i, index) in iconsFiltered" :key="index">
             <div
               @click="select(i)"
@@ -54,6 +57,7 @@ const iconsFiltered = computed(() => {
             </div>
           </div>
         </div>
+        <div v-else>No results found</div>
       </div>
     </Transition>
   </div>
