@@ -75,8 +75,7 @@ const iconsFiltered = computed(() => {
                 { selected: i.name == selected },
               ]"
             >
-              <i :class="`ph-` + i.name" />
-              {{ i.name }}
+              <Icon :name="`ph:` + i.name" />
             </div>
           </div>
         </div>
